@@ -13,7 +13,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return "Beer & Code";
+        $clients = Client::with('user','address')->paginate(10);
+
+        return view('clients.index', compact('clients'));
     }
 
     /**
@@ -21,7 +23,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
     /**
